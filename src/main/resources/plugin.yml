@@ -1,0 +1,9 @@
+main: asia.ubb.whitelistcleaner.WhitelistCleaner
+name: UBBWhitelistCleaner
+version: 0.0.0-dev
+description: Auto whitelist cleaner plugin by the Union of Black Bean.
+api-version: 1.15
+load: STARTUP
+author: Union of Black Bean
+authors: [leungyauming]
+prefix: UBBWhitelistCleaner
