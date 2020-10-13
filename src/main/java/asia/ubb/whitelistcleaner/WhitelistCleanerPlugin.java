@@ -11,10 +11,6 @@ public class WhitelistCleanerPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        File dataFolder = getDataFolder();
-        if (!dataFolder.exists())
-            if (!dataFolder.mkdirs())
-                throw new RuntimeException("Cannot create data folder.");
         saveDefaultConfig();
 
         String cleanIntervalStr = getConfig().getString("clean-interval");
