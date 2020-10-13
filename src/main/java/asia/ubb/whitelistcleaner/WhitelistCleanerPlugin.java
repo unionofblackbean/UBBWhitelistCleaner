@@ -14,14 +14,11 @@ public class WhitelistCleanerPlugin extends JavaPlugin {
     private final File logFile = new File(getDataFolder(), "log.txt");
 
     private void saveLog() {
-        if (!logFile.exists()) {
-            try {
-                logFile.createNewFile();
-            } catch (IOException e) {
-                getLogger().log(Level.SEVERE, "Could not save " + logFile.getName() + ".", e);
-            }
-        } else {
-            getLogger().warning("Could not save " + logFile.getName() + " because " + logFile.getName() + " already exists.");
+        try {
+            if (!logFile.createNewFile())
+                getLogger().warning("Could not save " + logFile.getName() + " because " + logFile.getName() + " already exists.");
+        } catch (IOException e) {
+            getLogger().log(Level.SEVERE, "Could not save " + logFile.getName() + ".", e);
         }
     }
 
@@ -43,7 +40,7 @@ public class WhitelistCleanerPlugin extends JavaPlugin {
                     this, new CleanTask(this, offlineBeforeClean, logFile),
                     0L, cleanInterval);
         } else
-            throw new IllegalArgumentException("Option clean-interval or offline-before-clean is not found in config.yml.");
+            getLogger().log(Level.SEVERE, "Could not find option clean-interval or offline-before-clean in config.");
     }
 
 }
