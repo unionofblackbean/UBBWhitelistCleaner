@@ -18,7 +18,7 @@ public class CleanTask implements Runnable {
 
     @Override
     public void run() {
-        boolean enabled = plugin.getConfig().getBoolean("enabled", false);
+        boolean enabled = plugin.getConfig().getBoolean("enable", false);
         if (enabled) {
             Date now = new Date();
             Set<OfflinePlayer> whitelistedPlayers = plugin.getServer().getWhitelistedPlayers();
