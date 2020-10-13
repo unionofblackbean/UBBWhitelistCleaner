@@ -3,7 +3,6 @@ package asia.ubb.whitelistcleaner;
 import asia.ubb.whitelistcleaner.task.CleanTask;
 import asia.ubb.whitelistcleaner.utils.TicksUtils;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitScheduler;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,8 +34,7 @@ public class WhitelistCleanerPlugin extends JavaPlugin {
             getLogger().info("Clean Interval (Seconds):         " + cleanInterval / 20);
             getLogger().info("Offline Before Clean (Seconds):   " + offlineBeforeClean / 20);
 
-            BukkitScheduler scheduler = getServer().getScheduler();
-            scheduler.scheduleSyncRepeatingTask(
+            getServer().getScheduler().scheduleSyncRepeatingTask(
                     this, new CleanTask(this, offlineBeforeClean, logFile),
                     0L, cleanInterval);
         } else

@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Set;
 import java.util.logging.Level;
 
 public class CleanTask implements Runnable {
@@ -26,18 +25,15 @@ public class CleanTask implements Runnable {
     @Override
     public void run() {
         // check if whitelist cleaner is enabled
-        boolean enabled = plugin.getConfig().getBoolean("enable", false);
-        if (enabled) {
+        if (plugin.getConfig().getBoolean("enable", false)) {
             try {
                 // open log file
                 FileWriter logFileWriter = new FileWriter(logFile, true);
 
                 // get current date and time
                 Date now = new Date();
-                // get all whitelisted players
-                Set<OfflinePlayer> whitelistedPlayers = plugin.getServer().getWhitelistedPlayers();
                 // loop through all whitelisted players
-                for (OfflinePlayer player : whitelistedPlayers) {
+                for (OfflinePlayer player : plugin.getServer().getWhitelistedPlayers()) {
                     // calculate player offline time
                     long offlineTime = (now.getTime() - player.getLastPlayed()) / 1000 * 20;
                     // check if player offline time is longer than allowed and if player is not online
@@ -49,10 +45,8 @@ public class CleanTask implements Runnable {
 
                         // convert current time to string
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-                        String time = sdf.format(now);
-                        // log removal details to file
-                        plugin.getLogger().info("asdasdasdasd");
-                        logFileWriter.write("[" + time + "] " + player.getName() + " (" + player.getUniqueId() + ")" + System.lineSeparator());
+                        logFileWriter.write("[" + sdf.format(now) + "] " +
+                                player.getName() + " (" + player.getUniqueId() + ")" + System.lineSeparator());
                     }
                 }
 
