@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 
-public class WhitelistCleanerPlugin extends JavaPlugin {
+public class UBBWhitelistCleanerPlugin extends JavaPlugin {
 
     private final File logFile = new File(getDataFolder(), "log.txt");
 
