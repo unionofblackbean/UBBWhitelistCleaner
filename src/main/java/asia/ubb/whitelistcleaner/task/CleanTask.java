@@ -18,8 +18,6 @@ public class CleanTask implements Runnable {
 
     @Override
     public void run() {
-        plugin.getLogger().info("----------------------------------------");
-
         boolean enabled = plugin.getConfig().getBoolean("enabled", false);
         if (enabled) {
             Date now = new Date();
@@ -27,20 +25,13 @@ public class CleanTask implements Runnable {
             for (OfflinePlayer whitelistedPlayer : whitelistedPlayers) {
                 long offlineTime = (now.getTime() - whitelistedPlayer.getLastPlayed()) / 1000 * 20;
 
-                plugin.getLogger().info("Player cleaned from whitelist:");
                 if (offlineTime >= offlineBeforeClean && !whitelistedPlayer.isOnline()) {
                     whitelistedPlayer.setWhitelisted(false);
                     plugin.getServer().reloadWhitelist();
-                    plugin.getLogger().info(whitelistedPlayer.getName());
                 }
 
             }
-        } else {
-            plugin.getLogger().info("Whitelist cleaner disabled.");
-            plugin.getLogger().info("Clean skipped.");
         }
-
-        plugin.getLogger().info("----------------------------------------");
     }
 
 }
