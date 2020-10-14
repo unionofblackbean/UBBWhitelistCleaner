@@ -1,5 +1,6 @@
 package asia.ubb.ubbwhitelistcleaner.task;
 
+import lombok.AllArgsConstructor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.Plugin;
 
@@ -10,17 +11,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 
+@AllArgsConstructor
 public class CleanTask implements Runnable {
 
     private final Plugin plugin;
     private final long offlineBeforeClean;
     private final File logFile;
-
-    public CleanTask(Plugin plugin, long offlineBeforeClean, File logFile) {
-        this.plugin = plugin;
-        this.offlineBeforeClean = offlineBeforeClean;
-        this.logFile = logFile;
-    }
 
     @Override
     public void run() {
