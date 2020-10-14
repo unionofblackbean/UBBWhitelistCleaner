@@ -1,13 +1,14 @@
-enable: true
+cleaner:
+  enable: true
 
-# y = Year
-# M = Month
-# d = Day
-# h = Hour
-# m = Minute
-# s = Second
-clean-interval: 1d
-offline-before-clean: 3M
+  # y = Year
+  # M = Month
+  # d = Day
+  # h = Hour
+  # m = Minute
+  # s = Second
+  interval: 1d
+  offline-allowance: 3M
 
 logging:
   file:

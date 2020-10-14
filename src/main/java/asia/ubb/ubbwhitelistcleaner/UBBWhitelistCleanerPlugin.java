@@ -26,8 +26,8 @@ public class UBBWhitelistCleanerPlugin extends JavaPlugin {
         saveDefaultConfig();
         saveLog();
 
-        String cleanIntervalStr = getConfig().getString("clean-interval");
-        String offlineBeforeCleanStr = getConfig().getString("offline-before-clean");
+        String cleanIntervalStr = getConfig().getString("cleaner.interval");
+        String offlineBeforeCleanStr = getConfig().getString("cleaner.offline-allowance");
         if (cleanIntervalStr != null && offlineBeforeCleanStr != null) {
             long cleanInterval = TicksUtils.parseTicks(cleanIntervalStr);
             long offlineBeforeClean = TicksUtils.parseTicks(offlineBeforeCleanStr);

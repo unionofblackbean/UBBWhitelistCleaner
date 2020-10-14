@@ -25,7 +25,7 @@ public class CleanTask implements Runnable {
     @Override
     public void run() {
         // check if whitelist cleaner is enabled
-        if (plugin.getConfig().getBoolean("enable", false)) {
+        if (plugin.getConfig().getBoolean("cleaner.enable", false)) {
             try {
                 // open log file
                 FileWriter logFileWriter = new FileWriter(logFile, true);
