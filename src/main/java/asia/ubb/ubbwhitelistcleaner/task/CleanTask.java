@@ -1,4 +1,4 @@
-package asia.ubb.whitelistcleaner.task;
+package asia.ubb.ubbwhitelistcleaner.task;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.Plugin;

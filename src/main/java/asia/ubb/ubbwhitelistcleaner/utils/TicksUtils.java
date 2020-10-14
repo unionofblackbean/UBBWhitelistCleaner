@@ -1,4 +1,4 @@
-package asia.ubb.whitelistcleaner.utils;
+package asia.ubb.ubbwhitelistcleaner.utils;
 
 public class TicksUtils {
 

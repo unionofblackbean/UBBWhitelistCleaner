@@ -1,7 +1,7 @@
-package asia.ubb.whitelistcleaner;
+package asia.ubb.ubbwhitelistcleaner;
 
-import asia.ubb.whitelistcleaner.task.CleanTask;
-import asia.ubb.whitelistcleaner.utils.TicksUtils;
+import asia.ubb.ubbwhitelistcleaner.task.CleanTask;
+import asia.ubb.ubbwhitelistcleaner.utils.TicksUtils;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
