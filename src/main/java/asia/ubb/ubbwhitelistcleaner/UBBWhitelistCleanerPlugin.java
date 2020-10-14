@@ -10,7 +10,7 @@ import java.util.logging.Level;
 
 public class UBBWhitelistCleanerPlugin extends JavaPlugin {
 
-    private final File logFile = new File(getDataFolder(), "log.txt");
+    private final File logFile = new File(getDataFolder(), getConfig().getString("logging.file.filename", "log.txt"));
 
     private void saveLog() {
         try {

@@ -12,3 +12,5 @@ offline-before-clean: 3M
 logging:
   file:
     enable: true
+    # relative to plugin data folder
+    filename: log.txt
