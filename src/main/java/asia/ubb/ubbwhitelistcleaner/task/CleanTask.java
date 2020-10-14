@@ -43,10 +43,13 @@ public class CleanTask implements Runnable {
                         // reload whitelist
                         plugin.getServer().reloadWhitelist();
 
-                        // convert current time to string
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-                        logFileWriter.write("[" + sdf.format(now) + "] " +
-                                player.getName() + " (" + player.getUniqueId() + ")" + System.lineSeparator());
+                        // check if file logging is enabled
+                        if (plugin.getConfig().getBoolean("logging.file.enable", false)) {
+                            // convert current time to string
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                            logFileWriter.write("[" + sdf.format(now) + "] " +
+                                    player.getName() + " (" + player.getUniqueId() + ")" + System.lineSeparator());
+                        }
                     }
                 }
 

@@ -8,3 +8,7 @@ enable: true
 # s = Second
 clean-interval: 1d
 offline-before-clean: 3M
+
+logging:
+  file:
+    enable: true
