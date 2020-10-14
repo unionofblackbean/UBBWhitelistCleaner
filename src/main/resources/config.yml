@@ -1,12 +1,13 @@
+# Duration reference table:
+# y = Year
+# M = Month
+# d = Day
+# h = Hour
+# m = Minute
+# s = Second
+
 cleaner:
   enable: true
-
-  # y = Year
-  # M = Month
-  # d = Day
-  # h = Hour
-  # m = Minute
-  # s = Second
   interval: 1d
   offline-allowance: 3M
 
