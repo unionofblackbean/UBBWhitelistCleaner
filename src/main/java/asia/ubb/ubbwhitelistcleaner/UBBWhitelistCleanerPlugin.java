@@ -23,22 +23,25 @@ public class UBBWhitelistCleanerPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        // save default config
         saveDefaultConfig();
+        // save cleaner log file
         saveLog();
 
-        String cleanIntervalStr = getConfig().getString("cleaner.interval");
-        String offlineBeforeCleanStr = getConfig().getString("cleaner.offline-allowance");
-        if (cleanIntervalStr != null && offlineBeforeCleanStr != null) {
-            long cleanInterval = TicksUtils.parseTicks(cleanIntervalStr);
-            long offlineBeforeClean = TicksUtils.parseTicks(offlineBeforeCleanStr);
-            getLogger().info("Clean Interval (Seconds):         " + cleanInterval / 20);
-            getLogger().info("Offline Before Clean (Seconds):   " + offlineBeforeClean / 20);
+        // get clean interval from config
+        long cleanInterval = TicksUtils.parseTicks(
+                getConfig().getString("cleaner.interval", "1d"));
+        // get offline allowance from config
+        long offlineAllowance = TicksUtils.parseTicks(
+                getConfig().getString("cleaner.offline-allowance", "3M"));
+        // print clean interval and offline allowance to console
+        getLogger().info("Clean Interval (Seconds):         " + cleanInterval / 20);
+        getLogger().info("Offline Before Clean (Seconds):   " + offlineAllowance / 20);
 
-            getServer().getScheduler().scheduleSyncRepeatingTask(
-                    this, new CleanTask(this, offlineBeforeClean, logFile),
-                    0L, cleanInterval);
-        } else
-            getLogger().log(Level.SEVERE, "Could not find option clean-interval or offline-before-clean in config.");
+        // schedule clean whitelist task
+        getServer().getScheduler().scheduleSyncRepeatingTask(
+                this, new CleanTask(this, offlineAllowance, logFile),
+                0L, cleanInterval);
     }
 
 }

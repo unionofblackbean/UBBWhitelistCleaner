@@ -1,6 +1,6 @@
 main: asia.ubb.ubbwhitelistcleaner.UBBWhitelistCleanerPlugin
 name: UBBWhitelistCleaner
-version: 0.0.2
+version: 0.0.3-dev
 description: Auto whitelist cleaner plugin by the Union of Black Bean.
 api-version: 1.15
 load: POSTWORLD
