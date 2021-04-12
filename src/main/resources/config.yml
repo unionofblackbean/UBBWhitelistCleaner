@@ -10,6 +10,7 @@ cleaner:
   enable: true
   interval: 1d
   offline-allowance: 3M
+  remove-never-played: false
 
 logging:
   file:

@@ -30,8 +30,15 @@ public class CleanTask implements Runnable {
                 Date now = new Date();
                 // loop through all whitelisted players
                 for (OfflinePlayer player : plugin.getServer().getWhitelistedPlayers()) {
+                    // get last played time
+                    long lastPlayed = player.getLastPlayed();
+                    // skip the player if the player has never played before
+                    if (plugin.getConfig().getBoolean("cleaner.remove-never-played", false))
+                        if (lastPlayed == 0)
+                            continue;
                     // calculate player offline time
-                    long offlineTime = (now.getTime() - player.getLastPlayed()) / 1000 * 20;
+                    long offlineTime = (now.getTime() - lastPlayed) / 1000 * 20;
+
                     // check if player offline time is longer than allowed and if player is not online
                     if (offlineTime >= offlineBeforeClean && !player.isOnline()) {
                         // remove player from whitelist
